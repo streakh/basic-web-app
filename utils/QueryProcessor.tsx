@@ -15,5 +15,23 @@ export default function QueryProcessor(query: string): string {
     return "ahoney";
   }
 
+  if (query.toLowerCase().includes("largest")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length >= 3) {
+      const numArray = numbers.map(Number);
+      const largest = Math.max(...numArray);
+      return largest.toString();
+    }
+  }
+
+  if (query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length >= 2) {
+      const num1 = Number(numbers[0]);
+      const num2 = Number(numbers[1]);
+      return (num1 + num2).toString();
+    }
+  }
+
   return "";
 }
